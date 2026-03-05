@@ -6,6 +6,7 @@ let currentStatus = "all";
 let total = document.getElementById("totalCount");
 let interviewCount = document.getElementById("interviewCount");
 let rejectedCount = document.getElementById("rejectedCount");
+let jobCount = document.getElementById("jobCount");
 
 // 2 -  get the toggling/Filtering buttons
 let allFilterBtn = document.getElementById("allFilterBtn");
@@ -18,15 +19,36 @@ let mainSection = document.querySelector("main");
 let filteredSection = document.getElementById("filteredSection");
 
 // count all the job cards in various lists
+// function calculateCount() {
+//     total.innerText = allCards.children.length;
+//     interviewCount.innerText = interviewList.length;
+//     rejectedCount.innerText = rejectedList.length;
+//     // console.log(total.innerText, interviewCount.innerText, rejectedCount.innerText)
+// }
+// count all the job cards in various lists
 function calculateCount() {
-    total.innerText = allCards.children.length;
+    let currentTotal = allCards.children.length;
+    
+    // Update the top stat boxes
+    total.innerText = currentTotal;
     interviewCount.innerText = interviewList.length;
     rejectedCount.innerText = rejectedList.length;
-    // console.log(total.innerText, interviewCount.innerText, rejectedCount.innerText)
+    
+    // Determine which number to show in the "Available Jobs" header
+    let displayCount = currentTotal; // Default to 'All'
+    
+    if (currentStatus === "interviewFilterBtn") {
+        displayCount = interviewList.length;
+    } else if (currentStatus === "rejectedFilterBtn") {
+        displayCount = rejectedList.length;
+    }
+    
+    // Update the DOM
+    jobCount.innerHTML = `<span>${displayCount}</span> Jobs`;
 }
 calculateCount();
 
-// toggle style
+// 4 - toggle style
 function toggleStyle(id) {
     allFilterBtn.classList.add("bg-white");
     interviewFilterBtn.classList.add("bg-white");
@@ -45,22 +67,23 @@ function toggleStyle(id) {
 
     // show and hide particular section
     // filtering while clicking the filter buttons
-    if (id == 'interviewFilterBtn') {
-        allCards.classList.add('hidden');
-        filteredSection.classList.remove('hidden');
+    if (id == "interviewFilterBtn") {
+        allCards.classList.add("hidden");
+        filteredSection.classList.remove("hidden");
         renderInterview();
-    }else if(id == 'rejectedFilterBtn'){
-        allCards.classList.add('hidden');
-        filteredSection.classList.remove('hidden');
+    } else if (id == "rejectedFilterBtn") {
+        allCards.classList.add("hidden");
+        filteredSection.classList.remove("hidden");
         renderRejected();
-    }else if(id == 'allFilterBtn'){
-        allCards.classList.remove('hidden');
-        filteredSection.classList.add('hidden');
+    } else if (id == "allFilterBtn") {
+        allCards.classList.remove("hidden");
+        filteredSection.classList.add("hidden");
     }
-
+    // to add them in the filteren count
+    calculateCount();
 }
 
-// main functionalities
+// 5 - main functionalities
 mainSection.addEventListener("click", function (event) {
     if (event.target.classList.contains("interviewBtn")) {
         let parentNode = event.target.parentNode.parentNode.parentNode;
@@ -147,6 +170,35 @@ mainSection.addEventListener("click", function (event) {
             renderInterview();
         }
 
+        calculateCount();
+    } else if (event.target.closest(".deleteBtn")) {
+        // 1. We use closest() here just in case the user clicks the <i> icon instead of the button padding
+        let card = event.target.closest(".jobCard");
+        let companyName = card.querySelector(".companyName").innerText;
+
+        // 2. filtering the job
+        interviewList = interviewList.filter(
+            (item) => item.companyName !== companyName,
+        );
+        rejectedList = rejectedList.filter(
+            (item) => item.companyName !== companyName,
+        );
+
+        // 3. Removing the clicked card from the ui
+        card.remove();
+
+        // 4. we are deleting from filtered view. So, we also have to delete from the real one all
+        let hiddenCards = allCards.querySelectorAll(".jobCard");
+        hiddenCards.forEach((hiddenCard) => {
+            if (
+                hiddenCard.querySelector(".companyName").innerText ===
+                companyName
+            ) {
+                hiddenCard.remove();
+            }
+        });
+
+        // 5. Update all totals, including the jobCount
         calculateCount();
     }
 });
