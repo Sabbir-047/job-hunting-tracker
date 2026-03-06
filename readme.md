@@ -9,6 +9,7 @@ Answer:
 
 # querySelectorAll: grabs all the elements from the html that match a CSS selector. Returns a static NodeList. which we can utilize through forEach() loop. 
 
+example:
 const getid = document.getElementById("#id");
 const getClass = document.getElementsByClassName(".className");
 const getQuery = document.querySelector('#id', ".class", "tag");
@@ -18,6 +19,22 @@ const queryList = document.querySelectorAll("#id",".class","tag");
 
 
 2. How do you create and insert a new element into the DOM?
+
+Answer: 
+To add new elements to the page dynamically, we have to go through a phase -> 
+* Create : we have to use document.createElement('tagName');
+* Add or customize: add text, classes, attributes through innterText, innerHTML
+* Insert: We have to use methods appendChild(), append() to an existing parent element.
+
+
+example ->
+const newPara = document.createElement('p');
+newPara.innerText = "Hello, my new paragraph";
+newPara.classList.add("text-gray-500");
+document.body.appendChild(newPara);
+
+
+
 3. What is Event Bubbling? And how does it work?
 4. What is Event Delegation in JavaScript? Why is it useful?
 5. What is the difference between preventDefault() and stopPropagation() methods?
