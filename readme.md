@@ -65,3 +65,8 @@ list.addEventListener('click', function(){
 
 
 5. What is the difference between preventDefault() and stopPropagation() methods?
+
+Answer:
+preventDefault() -> Stops the browsere's default, buit-in behaviors like refreshing a page when submitted, this one prevents it. 
+
+stopPropagation() -> Stops the event from bubbling up the DOM event to it's parent. 

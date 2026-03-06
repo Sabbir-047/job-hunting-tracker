@@ -172,7 +172,7 @@ mainSection.addEventListener("click", function (event) {
 
         calculateCount();
     } else if (event.target.closest(".deleteBtn")) {
-        // 1. We use closest() here just in case the user clicks the <i> icon instead of the button padding
+        // 1. We use closest here just in case the user clicks the <i> icon instead of the button padding
         let card = event.target.closest(".jobCard");
         let companyName = card.querySelector(".companyName").innerText;
 
