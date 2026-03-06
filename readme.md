@@ -46,4 +46,22 @@ example:
 </div>
 
 4. What is Event Delegation in JavaScript? Why is it useful?
+
+Answer:
+Event delegation is a pattern that takes advantge of the event bubbling. Instead of adding different event listeneres we use one single event listener to their parent element, when a child is clicked we can access it through (event.target).
+
+Why use it ? 
+It saves huge memory and automatically handles dynamic elements. As an example: if we add new elements to the DOM we don't have to use another event listener, the parent is still there to handle this things.
+
+
+example:
+const list = document.getElementById('myList');
+
+list.addEventListener('click', function(){
+    if(event.target.tagName === 'li'){
+        console.log("Man u clicked: "+ event.target.innerText);
+    }
+})
+
+
 5. What is the difference between preventDefault() and stopPropagation() methods?
