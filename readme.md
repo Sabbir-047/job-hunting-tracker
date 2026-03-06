@@ -36,5 +36,14 @@ document.body.appendChild(newPara);
 
 
 3. What is Event Bubbling? And how does it work?
+
+Answer:
+Event bubble is the default behavior of events in the DOM. When an event like(click, keyup) or anything arises, it first triggeres the listener on that element, then it goes up to the parent and so on to it's upper parent. Finally to the document object.
+
+example:
+<div id="parent" onclick="alert('Parent Clicked!')">
+    <button id="child" onlcick="alert('You clicked me to')">Click Me mate</button>
+</div>
+
 4. What is Event Delegation in JavaScript? Why is it useful?
 5. What is the difference between preventDefault() and stopPropagation() methods?
