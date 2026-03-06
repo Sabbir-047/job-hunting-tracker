@@ -7,6 +7,7 @@ let total = document.getElementById("totalCount");
 let interviewCount = document.getElementById("interviewCount");
 let rejectedCount = document.getElementById("rejectedCount");
 let jobCount = document.getElementById("jobCount");
+let emptyState = document.getElementById("empty-state");
 
 // 2 -  get the toggling/Filtering buttons
 let allFilterBtn = document.getElementById("allFilterBtn");
@@ -28,21 +29,21 @@ let filteredSection = document.getElementById("filteredSection");
 // count all the job cards in various lists
 function calculateCount() {
     let currentTotal = allCards.children.length;
-    
+
     // Update the top stat boxes
     total.innerText = currentTotal;
     interviewCount.innerText = interviewList.length;
     rejectedCount.innerText = rejectedList.length;
-    
+
     // Determine which number to show in the "Available Jobs" header
     let displayCount = currentTotal; // Default to 'All'
-    
+
     if (currentStatus === "interviewFilterBtn") {
         displayCount = interviewList.length;
     } else if (currentStatus === "rejectedFilterBtn") {
         displayCount = rejectedList.length;
     }
-    
+
     // Update the DOM
     jobCount.innerHTML = `<span>${displayCount}</span> Jobs`;
 }
@@ -65,19 +66,30 @@ function toggleStyle(id) {
     selected.classList.remove("bg-white");
     selected.classList.add("bg-sky-500");
 
+    emptyState.classList.add("hidden");
+
     // show and hide particular section
     // filtering while clicking the filter buttons
     if (id == "interviewFilterBtn") {
         allCards.classList.add("hidden");
         filteredSection.classList.remove("hidden");
         renderInterview();
+        if (filteredSection.children.length < 1) {
+            emptyState.classList.remove("hidden");
+        }
     } else if (id == "rejectedFilterBtn") {
         allCards.classList.add("hidden");
         filteredSection.classList.remove("hidden");
         renderRejected();
+        if (filteredSection.children.length < 1) {
+            emptyState.classList.remove("hidden");
+        }
     } else if (id == "allFilterBtn") {
         allCards.classList.remove("hidden");
         filteredSection.classList.add("hidden");
+        if (allCards.children.length < 1) {
+            emptyState.classList.remove("hidden");
+        }
     }
     // to add them in the filteren count
     calculateCount();

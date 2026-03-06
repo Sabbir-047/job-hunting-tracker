@@ -63,16 +63,19 @@
 
             <!-- toggle buttons section -->
             <div>
-                <button onclick="toggleStyle('allFilterBtn')" id="allFilterBtn" class="bg-sky-500 text-black px-5 py-2 cursor-pointer rounded-lg border border-gray-400">All</button>
-                <button onclick="toggleStyle('interviewFilterBtn')" id="interviewFilterBtn" class="bg-white text-black  border border-gray-400 px-5 py-2 cursor-pointer rounded-lg">Interview</button>
-                <button onclick="toggleStyle('rejectedFilterBtn')" id="rejectedFilterBtn" class="bg-white text-black  border border-gray-400 px-5 py-2 cursor-pointer rounded-lg">Rejected</button>
+                <button onclick="toggleStyle('allFilterBtn')" id="allFilterBtn"
+                    class="bg-sky-500 text-black px-5 py-2 cursor-pointer rounded-lg border border-gray-400">All</button>
+                <button onclick="toggleStyle('interviewFilterBtn')" id="interviewFilterBtn"
+                    class="bg-white text-black  border border-gray-400 px-5 py-2 cursor-pointer rounded-lg">Interview</button>
+                <button onclick="toggleStyle('rejectedFilterBtn')" id="rejectedFilterBtn"
+                    class="bg-white text-black  border border-gray-400 px-5 py-2 cursor-pointer rounded-lg">Rejected</button>
             </div>
 
 
             <!-- filtered section -->
-             <section id="filteredSection" class="hidden space-y-6">
+            <section id="filteredSection" class="hidden space-y-6">
 
-             </section>
+            </section>
 
 
             <!-- cards section -->
@@ -92,7 +95,8 @@
                         </div>
                         <div class="space-y-2">
                             <button class="btn btn-active jobStatus">Not Applied</button>
-                            <p class="description">Build cross-platform mobile applications using React Native. Work on products used by
+                            <p class="description">Build cross-platform mobile applications using React Native. Work on
+                                products used by
                                 millions of users worldwide.</p>
                         </div>
                         <div class="flex gap-2">
@@ -120,7 +124,8 @@
                         </div>
                         <div class="space-y-2">
                             <button class="btn btn-active jobStatus">Not Applied</button>
-                            <p class="description">Build cross-platform mobile applications using React Native. Work on products used by
+                            <p class="description">Build cross-platform mobile applications using React Native. Work on
+                                products used by
                                 millions of users worldwide.</p>
                         </div>
                         <div class="flex gap-2">
@@ -148,7 +153,8 @@
                         </div>
                         <div class="space-y-2">
                             <button class="btn btn-active jobStatus">Not Applied</button>
-                            <p class="description">Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.</p>
+                            <p class="description">Transform complex data into compelling visualizations. Required
+                                skills: D3.js, React, and strong analytical thinking.</p>
                         </div>
                         <div class="flex gap-2">
                             <button class="interviewBtn btn btn-outline btn-success">INTERVIEW</button>
@@ -175,7 +181,8 @@
                         </div>
                         <div class="space-y-2">
                             <button class="btn btn-active jobStatus">Not Applied</button>
-                            <p class="description">Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.</p>
+                            <p class="description">Create beautiful and functional user interfaces for our suite of
+                                products. Strong design skills and frontend development expertise required.</p>
                         </div>
                         <div class="flex gap-2">
                             <button class="interviewBtn btn btn-outline btn-success">INTERVIEW</button>
@@ -202,7 +209,8 @@
                         </div>
                         <div class="space-y-2">
                             <button class="btn btn-active jobStatus">Not Applied</button>
-                            <p class="description">Build enterprise applications with JavaScript and modern frameworks. We offer competitive
+                            <p class="description">Build enterprise applications with JavaScript and modern frameworks.
+                                We offer competitive
                                 compensation, health insurance, and professional development opportunities.</p>
                         </div>
                         <div class="flex gap-2">
@@ -230,7 +238,8 @@
                         </div>
                         <div class="space-y-2">
                             <button class="btn btn-active jobStatus">Not Applied</button>
-                            <p class="description">Join our fast-growing startup and work on our core platform. Experience with Node.js and
+                            <p class="description">Join our fast-growing startup and work on our core platform.
+                                Experience with Node.js and
                                 React required. Great benefits and equity package included.</p>
                         </div>
                         <div class="flex gap-2">
@@ -258,7 +267,8 @@
                         </div>
                         <div class="space-y-2">
                             <button class="btn btn-active jobStatus">Not Applied</button>
-                            <p class="description">We are looking for an experienced Frontend Developer to build scalable web applications
+                            <p class="description">We are looking for an experienced Frontend Developer to build
+                                scalable web applications
                                 using React and TypeScript. You will work with a talented team on cutting-edge projects.
                             </p>
                         </div>
@@ -272,6 +282,14 @@
                         <button class="deleteBtn btn rounded-full"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                 </div>
+            </div>
+
+
+            <!-- Empty State -->
+            <div id="empty-state" class="flex-col items-center justify-center py-20 gap-4 text-center bg-white rounded-2xl hidden">
+                <div class="text-7xl opacity-20">📄</div>
+                <p class="font-syne text-lg font-bold text-navy">No jobs available</p>
+                <p class="text-sm text-slate-400">Check back soon for new job opportunities</p>
             </div>
         </section>
     </main>
